@@ -1,23 +1,23 @@
-# MikroTik RouterOs Autoupdate
+# MikroTik RouterOS Autoupdate
 
 This repository contains scripts which allow MikroTik RouterOS devices to have its OS, packages, and firmware always up to date. About all updates and failures email notifications are sent.
 
 ## Description
 
-These scripts perform these oprations:
+These scripts perform these operations:
 
 - Check if package updates available (same as `System -> Packages` and `Check For Updates`)
 - If updates available, send start update notification email
 - Initialize packages update
 - After updates the device reboots
 - On start check if RouterOS updated, and notify this by email
-- Initaialize firmware upgrade (same as `System -> Routerboard` and `Upgrade`)
+- Initialize firmware upgrade (same as `System -> Routerboard` and `Upgrade`)
 - Wait firmware installed and reboot 
 - After rebooted, send email notification about update completion
 
 ## Prerequisites
 
-Email sending reuires valid POP server configuration. You can configure it once using Email Settings of WinBox or WebFig by opening:
+Email sending requires valid POP server configuration. You can configure it once using Email Settings of WinBox or WebFig by opening:
 
 `Tools -> Email`
 
@@ -37,9 +37,9 @@ If your WAN is not PPPoE, set your type of connection at line `19`:
 
 Instead of `pppoe-client` there could be `ppp-client`, `ovpn-client`, or else. Maybe your "wait for internet connection" logic will be different.
 
-### Notification Email Recepient
+### Notification Email Recipient
 
-Script `system-email.rsc` contains email of updates email recepient. Update it it with your email:
+Script `system-email.rsc` contains email of updates email recipient. Update it it with your email:
 
 `:local to "notification.email@example.com"`
 
@@ -57,4 +57,4 @@ In order to run updates periodically, create one scheduler entry using `System -
 
 `/system script run system-update`
 
-Please note that during RouterOS updates the device will be down and rebooted two times, so take this into consideration when configuring scheduler's trigger time. Usual downtime is up to 5 minutes, including wait for PPPoE connections after reboots. Updates happen only when there are new packages available, otherwise the device stays up without interruptions.
+Please note that during RouterOS updates the device will be down and rebooted two times, so take this into consideration when configuring scheduler trigger time. Usual downtime is up to 5 minutes, including wait for PPPoE connections after reboots. Updates happen only when there are new packages available, otherwise the device stays up without interruptions.
